@@ -58,7 +58,7 @@
         search: $queryString('').usePush().as('search'),
         showCategories: false,
         selectedCategories: new Set(),
-        selectedVersion: $queryString('3').usePush().as('version'),
+        selectedVersion: $queryString('4').usePush().as('version'),
         selectedPrice: $queryString('All').usePush().as('price'),
         selectedSort: $queryString('Newest').usePush().as('sort'),
         features: $queryString({
@@ -76,6 +76,9 @@
         },
         set currentPage(value) {
             this._currentPage = value
+            this.$nextTick(() => {
+                this.$refs.section.scrollIntoView({ behavior: 'smooth' })
+            })
         },
 
         perPage: 24,
